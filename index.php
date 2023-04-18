@@ -29,17 +29,13 @@ $shield = new Shield();
 $axe = new Axe();
 $mace = new Mace();
 $pike = new Pike();
-
 $spear = new Spear();
 $sword = new Sword();
-
 $bow = new Bow();
 
 // Armors
 $steel = new Steel();
-
 $chainMail = new ChainMail();
-
 $leather = new Leather();
 $textile = new Textile();
 
