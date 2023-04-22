@@ -1,5 +1,5 @@
 <?php
-class WarriorWithHorse extends Warrior{
+class WarriorCommander extends Warrior{
     private $weapon;
     private $shield;
     private $armor;
@@ -8,7 +8,7 @@ class WarriorWithHorse extends Warrior{
 
     public function __construct($name, $attack, $weapon, $shield, $armor_name,$armor, $armor_weight)
     {
-        parent::__construct(name: $name, hp: 100, speed: 100 - $armor_weight, attack: $attack+10, horse:'Have');
+        parent::__construct(name: $name, hp: 150, speed: 100 - $armor_weight, attack: $attack+10, horse:'Have');
         $this->weapon = $weapon;
         $this->shield = $shield;
         $this->armor_name = $armor_name;
@@ -16,37 +16,7 @@ class WarriorWithHorse extends Warrior{
         $this->armor_weight = $armor_weight;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getArmor()
-    {
-        return $this->armor;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getShield()
-    {
-        return $this->shield;
-    }
-
-    /**
-     * @param mixed $armor
-     */
-    public function setArmor($armor): void
-    {
-        $this->armor = $armor;
-    }
-
-    /**
-     * @param mixed $shield
-     */
-    public function setShield($shield): void
-    {
-        $this->shield = $shield;
-    }
     public function __toString(){
         return parent::__toString().'Weapon: '.$this->weapon.';</br>'.'Shield: '.$this->shield.';</br>'.'Armor type: '.$this->armor_name.';</br>'.'Armor: '.$this->armor.';';
     }

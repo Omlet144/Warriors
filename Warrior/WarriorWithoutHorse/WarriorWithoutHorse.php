@@ -17,6 +17,34 @@ abstract class WarriorWithoutHorse extends Warrior{
 
     }
 
+    public function getArmor()
+    {
+        return $this->armor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShield()
+    {
+        return $this->shield;
+    }
+
+    /**
+     * @param mixed $armor
+     */
+    public function setArmor($armor): void
+    {
+        $this->armor = $armor;
+    }
+
+    /**
+     * @param mixed $shield
+     */
+    public function setShield($shield): void
+    {
+        $this->shield = $shield;
+    }
     public function __toString(){
         return parent::__toString().'Weapon: '.$this->weapon.';</br>'.'Shield: '.$this->shield.';</br>'.'Armor type: '.$this->armor_name.';</br>'.'Armor: '.$this->armor.';';
     }
