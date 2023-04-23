@@ -10,8 +10,12 @@ include_once 'Armor\TypeArmor\Light\Leather.php';
 include_once 'Armor\TypeArmor\Light\Textile.php';
 
 include_once 'Warrior\Warrior.php';
-include_once 'Warrior\WarriorCommander\WarriorCommander.php';
+
 include_once 'Warrior\WarriorWithHorse\WarriorWithHorse.php';
+include_once 'Warrior\WarriorWithHorse\WarriorCommander\WarriorCommanderPower.php';
+include_once 'Warrior\WarriorWithHorse\WarriorCommander\WarriorCommanderSpeed.php';
+include_once 'Warrior\WarriorWithHorse\WarriorCommander\WarriorCommanderArmor.php';
+
 include_once 'Warrior\WarriorWithoutHorse\WarriorWithoutHorse.php';
 include_once 'Warrior\WarriorWithoutHorse\TypeWarriors\HeavyWarrior.php';
 include_once 'Warrior\WarriorWithoutHorse\TypeWarriors\MediumWarrior.php';
@@ -42,48 +46,22 @@ $chainMail = new ChainMail();
 $leather = new Leather();
 $textile = new Textile();
 
+//Commanders
+$commander_power = new WarriorCommanderPower('commander_power', $pike, $shield, $chainMail);
+$commander_speed = new WarriorCommanderSpeed('commander_speed', $bow, $shield, $textile);
+$commander_armor = new WarriorCommanderSpeed('commander_armor', $sword, $shield, $steel);
 //Warriors
-$warrior_with_horse = new WarriorWithHorse(
-    'warrior_with_horse',
-    $sword->getAttack(),
-    $sword->getName(),
-    $shield->getStrength(),
-    $chainMail->getName(),
-    $chainMail->getStrength(),
-    $chainMail->getWeight()
-);
+$warrior_with_horse = new WarriorWithHorse('warrior_with_horse', $sword, $shield, $chainMail);
+$warrior_with_horse2 = new WarriorWithHorse('warrior_with_horse', $mace, $shield, $leather);
+$warrior_heavy = new HeavyWarrior('warrior_heavy', $axe, $shield, $steel);
+$warrior_medium = new MediumWarrior('warrior_medium', $spear, $shield, $chainMail);
+$warrior_light = new LightWarrior('warrior_light', $bow, $textile);
 
-$warrior_with_horse2 = new WarriorWithHorse(
-    'warrior_with_horse',
-    $mace->getAttack(),
-    $mace->getName(),
-    $shield->getStrength(),
-    $leather->getName(),
-    $leather->getStrength(),
-    $leather->getWeight()
-);
-$warrior_heavy = new HeavyWarrior(
-    'warrior_heavy',
-    $axe->getAttack(),
-    $axe->getName(),
-    $shield->getStrength(),
-    $steel->getName(),
-    $steel->getStrength(),
-    $steel->getWeight()
-);
-$warrior_light = new LightWarrior(
-    'warrior_light',
-    $bow->getAttack(),
-    $bow->getName(),
-    $textile->getName(),
-    $textile->getStrength(),
-    $textile->getWeight()
-);
 $flag = 0;
 $battle = new Battle();
 //------------------Squads---------------------
-$squad1 = array("Alex"=>array($warrior_with_horse,$warrior_light));
-$squad2 = array("Enemy"=>array($warrior_with_horse2,$warrior_heavy));
+$squad1 = array("Alex"=>array($commander_power, $warrior_with_horse,$warrior_light, $warrior_heavy));
+$squad2 = array("Enemy"=>array($commander_speed, $warrior_with_horse2,$warrior_medium, $warrior_light));
 //------------------Battle---------------------
 foreach ($squad1 as $name_squad=>$item1)
 {

@@ -6,14 +6,14 @@ class WarriorWithHorse extends Warrior{
     private $armor_name;
     private $armor_weight;
 
-    public function __construct($name, $attack, $weapon, $shield, $armor_name,$armor, $armor_weight)
+    public function __construct($name, $weapon, $shield,$armor)
     {
-        parent::__construct(name: $name, hp: 100, speed: 100 - $armor_weight, attack: $attack+10, horse:'Have');
-        $this->weapon = $weapon;
-        $this->shield = $shield;
-        $this->armor_name = $armor_name;
-        $this->armor = $armor;
-        $this->armor_weight = $armor_weight;
+        parent::__construct(name: $name, hp: 100, speed: 100 - $armor->getWeight(), attack: $weapon->getAttack()+10, horse:'Have');
+        $this->weapon = $weapon->getName();
+        $this->shield = $shield->getStrength();
+        $this->armor_name = $armor->getName();
+        $this->armor = $armor->getStrength();
+        $this->armor_weight = $armor->getWeight();
     }
 
     /**
